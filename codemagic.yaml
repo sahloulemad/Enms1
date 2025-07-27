@@ -1,0 +1,13 @@
+workflows:
+  build-apk:
+    name: Build APK
+    environment:
+      flutter: stable
+    scripts:
+      - echo "🔧 Unzipping project..."
+      - unzip netFlow_fixed.zip -d netflow
+      - cd netflow
+      - flutter pub get
+      - flutter build apk --release
+    artifacts:
+      - netflow/build/app/outputs/flutter-apk/app-release.apk
